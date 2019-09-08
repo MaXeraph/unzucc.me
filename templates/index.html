@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<title>unzucc.me</title>
+		<meta charset= "UTF-8">
+		<link rel="stylesheet" type="text/css" href="static/main.css"/>
+	</head>
+	<body>
+	<div class="header">
+		  <a href="#default" class="logo">UNZUCC.ME</a>
+		  <div class="header-right">
+			<a id="author">By Humu Inc.</a>
+			<a class="active" href="#home">Home</a>
+			<a href="#contact">Contact</a>
+			<a href="#about">About</a>
+		</div>
+	</div>
+	<div class="header" id="para"> <p> Welcome to our hackathon project! We can help you become unrecognizable to Facebook's auto tagging.</p>
+	</div>
+		<!-- Maybe add an asthetic photo that spans across the page. -->
+		<!-- uploading panel -->
+		<div class="container1" id="container1">
+		<img id="before" src="static/uploadButton.png" class="button"/>
+			<script>
+				function previewFile(){
+					var preview = document.querySelector('img');
+					var file = document.querySelector('input[type=file]').files[0];
+					var reader = new FileReader();
+
+					reader.addEventListener("load", function () {
+						preview.src = reader.result;
+					}, false);
+
+					if (file) {
+						reader.readAsDataURL(file);
+					}
+				}
+			</script>
+		</div>
+
+		<!-- downloading panel -->
+		<div class="container2" id="container2">
+			<img src="{{ url_for('static', filename=imaging) }}" />
+		</div>
+		
+		<!-- BUTTONS vv -->
+		<form method="post" enctype="multipart/form-data">
+			<input type="file" class="choosefile_button" name="file" onchange="previewFile()"/>
+			<p>Enter a value to change the masking level. &#40;Recommended between 0-50&#41;.</p>
+			<input name="text">
+			<input type="submit" class="upload_button" value="Upload File" name="submit"/>
+		</form>
+
+		<!-- BUTTONS ^^ -->
+	</body>
+</html>
